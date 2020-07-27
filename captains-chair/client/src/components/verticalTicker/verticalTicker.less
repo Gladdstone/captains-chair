@@ -1,0 +1,59 @@
+@import '../../variables';
+
+.ticker-container {
+  background: @light-black;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+  margin: 1em auto;
+  overflow: hidden;
+  position: relative;
+
+  .scroll {
+    top: 6em;
+    position: relative;
+    box-sizing: border-box;
+    animation: scroll 80s linear infinite;
+
+    ul {
+      padding-left: 0;
+
+      li {
+        align-items: center;
+        background-color: @grey;
+        border-radius: 0.2rem;
+        display: flex;
+        flex-direction: row;
+        height: 2em;
+        line-height: 100%;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        padding: 0 1rem;
+        
+        a {
+          color: @off-white;
+        }
+      }
+    }
+  }
+  
+  .scroll:hover {
+    animation-play-state: paused;
+  }
+  
+}
+
+
+
+/* Make it move! */
+@keyframes scroll {
+  0%   { top:   8em }
+  100% { top: -180em }
+}
+.scroll {
+margin: 0;
+  padding: 0 1em;
+  line-height: 1.5em;
+  font: 1em 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+}
+
+

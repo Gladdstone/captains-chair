@@ -1,6 +1,8 @@
 .env
+.DS_Store
 .vscode/settings.json
 build/
 dist/
 env/
 __pycache__/
+node_modules/
