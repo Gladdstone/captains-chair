@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.current-weather {
+.weather-container.large {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -20,5 +20,20 @@
     img {
       margin-top: 30%;
     }
+  }
+}
+
+.weather-container.small {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: center;
+
+  .icon {
+    background-color: @grey;
+    border-radius: 50%;
+    height: 6rem;
+    margin-left: 20%;
   }
 }

@@ -4,7 +4,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 
 # Local
-from api import weatherservice, timeservice, twitterservice, nestservice
+from api import weatherservice, timeservice, twitterservice, marketservice, nestservice
 
 
 load_dotenv('.env')
@@ -23,7 +23,10 @@ API_DATE_LONG = '/date/long'
 API_DATE_SHORT = '/date/short'
 API_TWITTER_TRENDS = '/twitter/trends'
 API_NEST_MOTION = '/nest/motion'
+API_MARKET_PRICE = '/market/stocks'
 
+# Market Service
+api.add_resource(marketservice.get_stock_quotes, API_MARKET_PRICE)
 # Nest Service
 api.add_resource(nestservice.get_has_motion, API_NEST_MOTION)
 # Time Service

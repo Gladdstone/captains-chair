@@ -1,0 +1,25 @@
+.ticker-container {
+  display: flex;
+  background-color: #0c0e15;
+  width: 100%;
+  overflow: hidden;
+  flex: 0 0 100%;
+
+  .scroll {
+    display: flex;
+    flex: 0 0 100%;
+    width: 100%;
+    animation: scroll 15s infinite linear;
+  }
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}
