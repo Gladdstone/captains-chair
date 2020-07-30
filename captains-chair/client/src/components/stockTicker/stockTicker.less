@@ -1,25 +1,46 @@
-.ticker-container {
+@import '../../variables';
+
+.stock-container {
   display: flex;
-  background-color: #0c0e15;
+  background-color: @dark-black;
+  margin-top: 2%;
   width: 100%;
   overflow: hidden;
   flex: 0 0 100%;
 
-  .scroll {
+  .horizontal-scroll {
     display: flex;
     flex: 0 0 100%;
     width: 100%;
-    animation: scroll 15s infinite linear;
+    // animation: horizontal-scroll 35s infinite linear;
+
+    .stock-item-container {
+      color: @off-white;
+      padding: 0.5rem 1.5rem;
+      
+      .stock-item {
+        display: flex;
+        flex-direction: row;
+
+        .chevron {
+          height: 100%;
+          width: auto;
+        }
+
+        div {
+          padding: 0 0.15rem;
+        }
+      }
+    }
   }
 }
 
-
-@keyframes scroll {
+@keyframes horizontal-scroll {
   0% {
-    transform: translateX(0%);
+    transform: translateX(100%);
   }
 
   100% {
-    transform: translateX(-100%);
+    transform: translateX(-160%);
   }
 }

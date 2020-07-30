@@ -18,7 +18,8 @@
     "less-loader": "^6.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "style-loader": "^1.2.1"
+    "style-loader": "^1.2.1",
+    "svg-url-loader": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

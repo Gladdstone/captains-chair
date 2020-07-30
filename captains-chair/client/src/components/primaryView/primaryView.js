@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 import Forecast from '../forecast/forecast';
-// import StockTicker from '../stockTicker/stockTicker';
-import VerticalTicker from '../verticalTicker/verticalTicker.js';
+import StockTicker from '../stockTicker/stockTicker';
+import VerticalTicker from '../verticalTicker/verticalTicker';
 import Weather from '../weather/weather';
 
 import './primaryView.less';
@@ -15,6 +15,7 @@ export default class PrimaryView extends React.Component {
   state = {
     dataLoaded: false,
     forecast: [],
+    quotes: {},
     trends: [],
     weather: {}
   }
@@ -32,6 +33,8 @@ export default class PrimaryView extends React.Component {
         axios.get('http://localhost:5000/weather/seven-day')
           .then(res => {
             this.setState({ forecast: res.data.list });
+            console.log(res.data.list);
+
             this.setState({ dataLoaded: true });
           });
       });
@@ -62,9 +65,14 @@ export default class PrimaryView extends React.Component {
             <div className='primary-view'>
               <div className='secondary-view'>
                 <Weather weather={weather} size='large' />
-                <VerticalTicker list={trends} className='twitter-ticker' />
               </div>
-              <Forecast list={forecast}/>
+              <div className='footer'>
+                <div class='tertiary-view'>
+                  <Forecast list={forecast} className='forecast' />
+                  <VerticalTicker list={trends} className='twitter-ticker' />
+                </div>
+                <StockTicker className='stock-ticker' />
+              </div>
             </div>
           </div>
         }

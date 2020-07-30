@@ -12,6 +12,8 @@ export default class Weather extends React.Component {
       weather: 'None - that\'s weird',
       icon: '',
       temp: 0.0,
+      min: 0.0,
+      max: 0.0,
       feelsLike: 0.0,
       sunrise: 1595757310,
       sunset: 1595810309
@@ -30,25 +32,39 @@ export default class Weather extends React.Component {
       this.setState({
         sunrise: this.props.weather.sunrise,
         sunset: this.props.weather.sunset
-      })
-    } 
+      });
+    }
+
+    if(this.props.weather.min && this.props.weather.max) {
+      this.setState({
+        min: this.props.weather.min,
+        max: this.props.weather.max
+      });
+    }
   }
 
   render() {
-    const { weather, icon, temp, feelsLike, sunrise, sunset } = this.state;
+    const { weather, icon, temp, min, max, feelsLike, sunrise, sunset } = this.state;
     const iconUri = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
 
     return (
       <div className={['weather-container', this.props.size].join(' ')}>
         <div className="icon"><img src={iconUri}/></div>
         <div className="weather">
-          <ul>
-            <li>{weather}</li>
-            <li>Temp: {temp} Feels like: {feelsLike}</li>
-              {(sunrise !== 1595757310 && sunset !== 1595810309) ? (
-                <li>Sunrise: {sunrise} Sunset: {sunset}</li>
-              ):(<li></li>)}
-          </ul>
+            {(min !== 0.0 && max !== 0.0) ? (
+              <ul>
+                <li>{weather}</li>
+                <li>Min: {min}</li>
+                <li>Max: {max}</li>
+              </ul>
+            ) : (
+              <ul>
+                <li>Temp: {temp} Feels like: {feelsLike}</li>
+                {(sunrise !== 1595757310 && sunset !== 1595810309) ? (
+                  <li>Sunrise: {sunrise} Sunset: {sunset}</li>
+                ) : (<li></li>)}
+              </ul>
+            )}
         </div>
       </div>
     );

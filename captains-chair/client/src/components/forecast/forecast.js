@@ -7,8 +7,6 @@ import './forecast.less';
 
 const Forecast = (list) => {
 
-  console.log(list);
-
   return (
     <div className='forecast-container'>
       {
