@@ -1,0 +1,65 @@
+service: captains-chair
+
+provider:
+  name: aws
+  runtime: python3.8
+  stage: dev
+  region: us-east-1
+  endpointType: regional
+  environment:
+    # access tokens here
+
+functions:
+  # Market Service
+  get_stock_quotes:
+    handler: marketservice/get_stock_quotes.get_stock_quotes
+    events:
+      - http:
+        path: /market/stocks
+        method: put
+  # Time Service
+  get_date:
+    handler: timeservice/get_date.get_date
+    events:
+      - http:
+        path: /date
+        method: get
+  get_date_long:
+    handler: timeservice/get_date_long.get_date_long
+    events:
+      - http:
+        path: /date/long
+        method: get
+  get_date_short:
+    handler: timeservice/get_date_short.get_date_short
+    events:
+      - http:
+        path: /date/short
+        method: get
+  # Twitter Service
+  get_top_50:
+    handler: twitterservice/get_top_50.get_top_50
+    events:
+      - http:
+        path: /twitter/trends
+        method: get
+  # Weather Service
+  get_current_weather:
+    handler: weatherservice/get_current_weather.get_current_weather
+    events:
+      - http:
+          path: /weather/current
+          method: get
+  get_seven_day_forecast:
+    handler: weatherservice/get_seven_day_forecast.get_seven_day_forecast
+    events:
+      - http:
+          path: /weather/seven-day
+          method: get
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
+plugins:
+  - serverless-python-requirements
